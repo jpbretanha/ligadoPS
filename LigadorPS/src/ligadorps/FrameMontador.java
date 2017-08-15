@@ -258,7 +258,7 @@ public class FrameMontador extends javax.swing.JFrame {
 
     private void AbrirSeg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirSeg1ActionPerformed
         JFileChooser jFileChooser1;
-        jFileChooser1 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\entradas");   //cria o jfilechooser
+        jFileChooser1 = new JFileChooser("entradas");   //cria o jfilechooser
         jFileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         int returnval = jFileChooser1.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
@@ -282,7 +282,7 @@ public class FrameMontador extends javax.swing.JFrame {
             m.ImprimeTabDef(TabDef1Area);
             FileWriter arquivo_w;  
             try {  
-                File mont1_f = new File("mont1.txt");
+                File mont1_f = new File("saidas/mont1.txt");
                 arquivo_w = new FileWriter(mont1_f);  
                 arquivo_w.write(m.getSAida()); 
                 
@@ -297,7 +297,7 @@ public class FrameMontador extends javax.swing.JFrame {
 
     private void AbrirSeg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirSeg2ActionPerformed
         JFileChooser jFileChooser2;
-        jFileChooser2 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\entradas");   //cria o jfilechooser
+        jFileChooser2 = new JFileChooser("entradas");   //cria o jfilechooser
         jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         int returnval = jFileChooser2.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
@@ -321,7 +321,7 @@ public class FrameMontador extends javax.swing.JFrame {
             m.ImprimeTabDef(TabDef2Area);
             FileWriter arquivo_w;
             try {  
-                File mont2_f = new File("mont2.txt");
+                File mont2_f = new File("saidas/mont2.txt");
                 arquivo_w = new FileWriter(mont2_f);  
                 arquivo_w.write(m.getSAida()); 
                 
