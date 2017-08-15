@@ -59,21 +59,21 @@ public class Tabela {
     public void putLabel(String s,int a,int b){
         StringTokenizer st = new StringTokenizer(s,":");
         s = (String)st.nextToken();
-         if(haselementoExtern(s)==false){
-        if(this.tabela.contains(s)){
-            int i = this.tabela.indexOf(s);
-            if(this.tabela1.get(i)!=1){
-                this.tabela1.set(i, a);
-                this.tabela2.set(i, b);
-                this.tabela3.set(i, 1);
-                }
-        }else{
-            this.tabela.add(s);
-            this.tabela1.add(a);
-            this.tabela2.add(b);
-            this.tabela3.add(1);
+        if(haselementoExtern(s)==false){
+            if(this.tabela.contains(s)){
+                int i = this.tabela.indexOf(s);
+                if(this.tabela1.get(i)!=1){
+                    this.tabela1.set(i, a);
+                    this.tabela2.set(i, b);
+                    this.tabela3.set(i, 1);
+                    }
+            }else{
+                this.tabela.add(s);
+                this.tabela1.add(a);
+                this.tabela2.add(b);
+                this.tabela3.add(1);
+            }
         }
-         }
     }
     public void setLabel(String s,int a,int b, int c){
         int i = this.tabela.indexOf(s);    

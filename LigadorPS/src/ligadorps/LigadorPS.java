@@ -95,7 +95,6 @@ public class LigadorPS {
     
     public void escreveArquivo(String nome, String conteudo){
         StringBuilder stb = new StringBuilder();
-        //System.out.print("Diretorio: "+mont1.getParent());
         stb.append(mont1.getParent()+"/").append(nome);
         try {  
             FileWriter fw = new FileWriter( new File(stb.toString()), true );
@@ -131,7 +130,7 @@ public class LigadorPS {
             index++;
         }
         
-        //teste pra verificar se alguma tabuso ficou sem def
+        //teste pra verificar se alguma tabela de uso ficou sem definicao
         for(int i=0; i<TabUso1.size(); i++){
             if(TabUso1.get(i).getDefinicao()== null ){
                 System.out.print("\nDeu erro no seg 1\n");
