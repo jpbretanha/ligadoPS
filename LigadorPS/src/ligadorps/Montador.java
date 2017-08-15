@@ -163,11 +163,11 @@ public class Montador {
                                 }else{
 
                                     if(token1.equals("mov")){
-                                    if(this.tabelaSegment.contLabol(operador)) this.saida+=tim.getHexdecimal(token1);
+                                    if(this.tabelaSegment.contLabel(operador)) this.saida+=tim.getHexdecimal(token1);
                                     else this.saida+=tim.getHexdecimalEspecila(token1,13);
                                     }else this.saida+=tim.getHexdecimal(token1);
                                 }
-                                //(this.tabelaSimbolos.realocavelLabol(operador) && this.tabelaSimbolos.definidoLabol(operador))
+                                //(this.tabelaSimbolos.realocavelLabel(operador) && this.tabelaSimbolos.definidoLabel(operador))
                             }else {
                                 //operador = st2.nextToken();
                                 if(operador.contains("[SI]")){
@@ -181,9 +181,9 @@ public class Montador {
 
                             }
                         }
-                        if(this.tabelaSimbolos.definidoLabol(operador)==false||this.tabelaSimbolos.haselementoExtern(operador) ) this.UD.putUso(operador,'+', bytes);
-                        this.saida+=" "+this.tabelaSimbolos.getAddressLabol(operador);
-                        if(this.tabelaSimbolos.realocavelLabol(operador)) this.UD.putBoolean(true);
+                        if(this.tabelaSimbolos.definidoLabel(operador)==false||this.tabelaSimbolos.haselementoExtern(operador) ) this.UD.putUso(operador,'+', bytes);
+                        this.saida+=" "+this.tabelaSimbolos.getAddressLabel(operador);
+                        if(this.tabelaSimbolos.realocavelLabel(operador)) this.UD.putBoolean(true);
                         else this.UD.putBoolean(false);
                         }else{
                            this.saida+=tim.getHexdecimal(token1,token);
@@ -195,8 +195,8 @@ public class Montador {
             }
 
         for(int i=0;i<this.tabelaSimbolos.size();i++)
-           if(this.tabelaSimbolos.definidoLabol(this.tabelaSimbolos.getElemento(i))&&this.tabelaSimbolos.isNumero(this.tabelaSimbolos.getElemento(i))==false)
-               this.UD.putDef(this.tabelaSimbolos.getElemento(i),this.tabelaSimbolos.getAddressLabol(this.tabelaSimbolos.getElemento(i)),this.tabelaSimbolos.realocavelLabol(this.tabelaSimbolos.getElemento(i))==true ? 'r':'a');
+           if(this.tabelaSimbolos.definidoLabel(this.tabelaSimbolos.getElemento(i))&&this.tabelaSimbolos.isNumero(this.tabelaSimbolos.getElemento(i))==false)
+               this.UD.putDef(this.tabelaSimbolos.getElemento(i),this.tabelaSimbolos.getAddressLabel(this.tabelaSimbolos.getElemento(i)),this.tabelaSimbolos.realocavelLabel(this.tabelaSimbolos.getElemento(i))==true ? 'r':'a');
     }
 
     public String ImpprimirTabelas(){

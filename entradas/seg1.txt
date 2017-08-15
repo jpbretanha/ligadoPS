@@ -1,0 +1,19 @@
+EXTRN um:ABS
+EXTRN nove:NEAR
+EXTRN oito:NEAR
+EXTRN sete:NEAR
+EXTRN seis:NEAR
+teste DW
+valor EQU 5
+mov AX,9
+mov AX,nove
+sub AX,valor
+in:
+mov oito,AX
+sub AX,um
+mov sete,AX
+sub AX,um
+mov seis,AX
+mov SP,AX
+hlt
+END inicio

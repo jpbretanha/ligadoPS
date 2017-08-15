@@ -75,19 +75,19 @@ public class Tabela {
         }
          }
     }
-    public void setLabol(String s,int a,int b, int c){
+    public void setLabel(String s,int a,int b, int c){
         int i = this.tabela.indexOf(s);    
         this.tabela1.set(i, a);//1 para definido -0 para indefinido
         this.tabela2.set(i, b);//valor na memoria
         this.tabela3.set(i, c);//1 para realocavel -0 não realocavel
     } 
-    public int getAddressLabol(String s){
+    public int getAddressLabel(String s){
         if(haselementoExtern(s)==false){
             int i = this.tabela.indexOf(s);  
             return this.tabela2.get(i);
         }else return 0;
     }
-    public boolean contLabol(String s){
+    public boolean contLabel(String s){
         return this.tabela.contains(s);
     }
 
@@ -101,7 +101,7 @@ public class Tabela {
         this.tabela3.remove(i);
         return d;
     }
-    public boolean definidoLabol(String s){
+    public boolean definidoLabel(String s){
         //if(this.tabela.isEmpty()==true) return false;
         if(haselementoExtern(s)==false){
             int i = this.tabela.indexOf(s);    
@@ -115,7 +115,7 @@ public class Tabela {
         if(a==true && b==false) return true;
             else return false;
         }
-    public boolean realocavelLabol(String s){
+    public boolean realocavelLabel(String s){
         if(haselementoExtern(s)==false){
             int i = this.tabela.indexOf(s);    
             return tabela3.get(i) == 1 ? true : false;

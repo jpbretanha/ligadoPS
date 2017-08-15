@@ -1,0 +1,23 @@
+EXTRN teste:NEAR
+um EQU 1
+dois DW
+tres DW
+quatro DW
+cinco DW
+seis DW
+sete DW
+oito DW
+nove DW
+zero DW
+sub AX,um
+mov cinco,AX
+sub AX,um
+mov quatro,AX
+sub AX,um
+mov tres,AX
+sub AX,um
+mov dois,AX
+mov AX,0
+mov zero,AX
+mov teste,AX
+hlt

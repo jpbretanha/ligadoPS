@@ -158,7 +158,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void AbrirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirBotaoActionPerformed
         JFileChooser jFileChooser1, jFileChooser2;
-        jFileChooser1 = new JFileChooser();   //cria o jfilechooser
+        jFileChooser1 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\LigadorPS");   //cria o jfilechooser
         jFileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         int returnval = jFileChooser1.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
@@ -168,7 +168,7 @@ public class Frame extends javax.swing.JFrame {
            ligador.setMont1(jFileChooser1.getSelectedFile());
         }
         
-        jFileChooser2 = new JFileChooser();   //cria o jfilechooser
+        jFileChooser2 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\LigadorPS");   //cria o jfilechooser
         jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         returnval = jFileChooser2.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){

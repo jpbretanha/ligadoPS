@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ligadorps;
 
 import java.io.File;
@@ -264,7 +258,7 @@ public class FrameMontador extends javax.swing.JFrame {
 
     private void AbrirSeg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirSeg1ActionPerformed
         JFileChooser jFileChooser1;
-        jFileChooser1 = new JFileChooser();   //cria o jfilechooser
+        jFileChooser1 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\entradas");   //cria o jfilechooser
         jFileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         int returnval = jFileChooser1.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
@@ -303,7 +297,7 @@ public class FrameMontador extends javax.swing.JFrame {
 
     private void AbrirSeg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirSeg2ActionPerformed
         JFileChooser jFileChooser2;
-        jFileChooser2 = new JFileChooser();   //cria o jfilechooser
+        jFileChooser2 = new JFileChooser("C:\\Users\\João Pedro Bretanha\\Desktop\\Trabalho FInal PS\\entradas");   //cria o jfilechooser
         jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         int returnval = jFileChooser2.showOpenDialog(null); //mostra a janela para abrir arquivos
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
