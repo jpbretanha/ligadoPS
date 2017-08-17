@@ -80,11 +80,11 @@ public class TabelaDeUsosEDef {
     }
     
     public void setBoollean(int i){
-    this.l = new boolean[i];
+        this.l = new boolean[i];
     }
     public void putBoolean(boolean b){
-    this.l[this.contador]=b;
-    this.contador++;
+        this.l[this.contador]=b;
+        this.contador++;
     }
     public boolean[] getBoolean(){
         return this.l;

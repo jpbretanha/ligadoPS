@@ -8,12 +8,12 @@ import javax.swing.JTextArea;
  * @author João Pedro Bretanha
  */
 public class Montador {
-   String Entrada,saida;
+    String Entrada,saida;
     Tabela tabelaSimbolos;
     Tabela tabelaSegment;
-    TabelaInstrucaoMaquina tim ;
-    TabelaPseudoInstrucoes tpi ;
-    TabelaDeUsosEDef UD;
+    TabelaInstrucaoMaquina tabelaInstrucaoMaquina ;
+    TabelaPseudoInstrucoes tabelaPseudoInstrucoes ;
+    TabelaDeUsosEDef tabelaUsosDef;
     int contador;
     
     public Montador(String s){
@@ -21,9 +21,9 @@ public class Montador {
         this.saida="";
         this.tabelaSimbolos = new Tabela();
         this.tabelaSegment = new Tabela();
-        this.tim = new TabelaInstrucaoMaquina();
-        this.tpi = new TabelaPseudoInstrucoes();    
-        this.UD = new TabelaDeUsosEDef();
+        this.tabelaInstrucaoMaquina = new TabelaInstrucaoMaquina();
+        this.tabelaPseudoInstrucoes = new TabelaPseudoInstrucoes();    
+        this.tabelaUsosDef = new TabelaDeUsosEDef();
         this.contador=0;
     }
 
@@ -37,38 +37,43 @@ public class Montador {
                 for(int i=0;st1.hasMoreElements()==true;i++){
                     token1 = token ;
                     token = st1.nextToken();
-                    if(this.tpi.isInstrucaoMontagem(token)){//Etoken = st1.nextToken();ntre se for instrução de montagem
-                        if(token.equals("DW")){
-                            bytes+=2;
-                            tokensDados+=2;
-                            if(st1.hasMoreElements()) {
+                    if(this.tabelaPseudoInstrucoes.isInstrucaoMontagem(token)){ //Etoken = st1.nextToken();ntre se for instrução de montagem
+                        switch (token) {
+                            case "DW":
+                                bytes+=2;
+                                tokensDados+=2;
+                                if(st1.hasMoreElements()) {
+                                    token = st1.nextToken();
+                                    
+                                }   break;
+                            case "EQU":
                                 token = st1.nextToken();
-
-                            }
-                        }else if(token.equals("EQU")){
-                            token = st1.nextToken();
-                            this.tabelaSimbolos.putEQU(token1,Integer.parseInt(token));
-                        }else if(token.equals("SEGMENT")){
-                            this.tabelaSegment.putLabel(this.tabelaSimbolos.removerLastElemento(),1, bytes);
-                        }else if(token.equals("ENDS")){
-                            this.tabelaSimbolos.removerLastElemento();
-                        }else if(token.equals("ASSUME")){
-                            token = st1.nextToken();
-                        }else if(token.equals("EXTRN")){
-                            StringTokenizer st2 = new StringTokenizer(st1.nextToken(),":");
-                            String s = st2.nextToken();
-                            if(st2.nextToken().equals("NEAR")) this.tabelaSimbolos.putLabelExtern(s, 1);
-                            else this.tabelaSimbolos.putLabelExtern(s, 0);
-
-                        }else if(token.equals("hlt")){
-                            this.contador++;
-                            bytes++;  
+                                this.tabelaSimbolos.putEQU(token1,Integer.parseInt(token));
+                                break;
+                            case "SEGMENT":
+                                this.tabelaSegment.putLabel(this.tabelaSimbolos.removeUltimoElemento(),1, bytes);
+                                break;
+                            case "ENDS":
+                                this.tabelaSimbolos.removeUltimoElemento();
+                                break;
+                            case "ASSUME":
+                                token = st1.nextToken();
+                                break;
+                            case "EXTRN":
+                                StringTokenizer st2 = new StringTokenizer(st1.nextToken(),":");
+                                String s = st2.nextToken();
+                                if(st2.nextToken().equals("NEAR")) this.tabelaSimbolos.putLabelExtern(s, 1);
+                                else this.tabelaSimbolos.putLabelExtern(s, 0);
+                                break;
+                            case "hlt":
+                                this.contador++;
+                                bytes++;  
+                                break;
                         }
 
-                    }else if(this.tim.isInstrução(token)==false && this.tim.isOperador(token)==false){//se não for instrução ou operador sem labol = contem labol ou é um labol con
+                    }else if(this.tabelaInstrucaoMaquina.isInstrução(token)==false && this.tabelaInstrucaoMaquina.isOperador(token)==false){//se não for instrução ou operador sem label = contem label ou é um label
                         StringTokenizer st2 = new StringTokenizer(token,",");
                         if(st2.countTokens()==1){           //se st2 conter apenas um elemento
-
                             if(this.tabelaSimbolos.isNumero(token)) this.tabelaSimbolos.putLabel(token, 1,Integer.parseInt(token),0);
                             else{
 
@@ -81,7 +86,7 @@ public class Montador {
                             if(operador.contains("[SI]")) bytes++;
                             StringTokenizer st3 = new StringTokenizer(operador,"[SI]");
                             operador = st3.nextToken();
-                            if(this.tim.isOperador(operador)){
+                            if(this.tabelaInstrucaoMaquina.isOperador(operador)){
                                 operador=st2.nextToken();
                                 if(operador.contains("[SI]")) bytes++;
                                 st3 = new StringTokenizer(operador,"[SI]");
@@ -93,7 +98,7 @@ public class Montador {
                             }
                             else this.tabelaSimbolos.putLabel(operador, 0, 0);
                         }
-                    }else if(this.tim.isInstrução(token)) {      //se for instrução     
+                    }else if(this.tabelaInstrucaoMaquina.isInstrução(token)) {      //se for instrução     
                         this.contador++;
                        if(token.equals("ret")|| token.equals("pop") || token.equals("push")){
                            bytes++;
@@ -108,7 +113,8 @@ public class Montador {
                 }
             }
            this.saida+=bytes+"\n"+tokensDados+"\n"+tokensInstr+"\n";
-     this.UD.setBoollean(this.contador);
+           
+     this.tabelaUsosDef.setBoollean(this.contador);
     }
 
     private void segundoPasso(){
@@ -120,33 +126,37 @@ public class Montador {
             for(int j=0;st.hasMoreElements()==true;j++){
                 st1 = new StringTokenizer((String) st.nextElement());
                 for(int i=0;st1.hasMoreElements()==true;i++){
-                    token1 = token ;
+                    token1 = token;
                     token = st1.nextToken();
-                    if(this.tpi.isInstrucaoMontagem(token)){//Entre se for instrução de montagem
-                        if(token.equals("DW")){
-                            if(st1.hasMoreElements()){
-                            token = st1.nextToken();
-                            this.saida +=token+"\n";
-                            }else this.saida += "?\n";
-                            bytes+=2;
-                        }else if(token.equals("EQU")){
-
-                        }else if(token.equals("EXTRN")){
-                            token = st1.nextToken();
-                        }else if(token.equals("hlt")){
-                            this.saida +="F4\n"; 
-                            this.UD.putBoolean(false);
+                    if(this.tabelaPseudoInstrucoes.isInstrucaoMontagem(token)){ //Se for instrução de montagem
+                        switch (token) {
+                            case "DW":
+                                if(st1.hasMoreElements()){
+                                    token = st1.nextToken();
+                                    this.saida +=token+"\n";
+                                }else this.saida += "?\n";
+                                bytes+=2;
+                                break;
+                            case "EQU":
+                                break;
+                            case "EXTRN":
+                                token = st1.nextToken();
+                                break;
+                            case "hlt":
+                                this.saida +="F4\n";
+                                this.tabelaUsosDef.putBoolean(false);
+                                break;
                         }
-                    }else if(this.tim.isInstrução(token)) {      //se for instrução     
+                    }else if(this.tabelaInstrucaoMaquina.isInstrução(token)) {      //se for instrução     
                        bytes+=2;
                        token1 = token ;
                        token = st1.nextToken();
 
-                       if(this.tim.isOperador(token)==false){
+                       if(this.tabelaInstrucaoMaquina.isOperador(token)==false){
                         String operador="";
                         StringTokenizer st2 = new StringTokenizer(token,",");
                         if(st2.countTokens()==1){           //se st2 conter apenas um elemento
-                            this.saida+=tim.getHexdecimal(token1);
+                            this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
                             operador=st2.nextToken();
                         }else{                              //se st2 conter dois elementos
                             operador = st2.nextToken();
@@ -157,77 +167,76 @@ public class Montador {
                                     bytes++;
                                     st3 = new StringTokenizer(operador,"[SI]");
                                     operador = st3.nextToken();
-                                    this.saida+=tim.getHexdecimalEspecila(token1,14);
+                                    this.saida+=tabelaInstrucaoMaquina.getHexdecimalEspecial(token1,14);
 
 
                                 }else{
 
                                     if(token1.equals("mov")){
-                                    if(this.tabelaSegment.contLabel(operador)) this.saida+=tim.getHexdecimal(token1);
-                                    else this.saida+=tim.getHexdecimalEspecila(token1,13);
-                                    }else this.saida+=tim.getHexdecimal(token1);
+                                    if(this.tabelaSegment.contLabel(operador)) this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
+                                    else this.saida+=tabelaInstrucaoMaquina.getHexdecimalEspecial(token1,13);
+                                    }else this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
                                 }
-                                //(this.tabelaSimbolos.realocavelLabel(operador) && this.tabelaSimbolos.definidoLabel(operador))
+                                
                             }else {
-                                //operador = st2.nextToken();
                                 if(operador.contains("[SI]")){
                                     st3 = new StringTokenizer(operador,"[SI]");
                                     operador = st3.nextToken();
-                                    this.saida+=tim.getHexdecimalEspecila(token1,16);
+                                    this.saida+=tabelaInstrucaoMaquina.getHexdecimalEspecial(token1,16);
 
                                 }else{
-                                    this.saida+=tim.getHexdecimalEspecila(token1,15);
+                                    this.saida+=tabelaInstrucaoMaquina.getHexdecimalEspecial(token1,15);
                                 }
 
                             }
                         }
-                        if(this.tabelaSimbolos.definidoLabel(operador)==false||this.tabelaSimbolos.haselementoExtern(operador) ) this.UD.putUso(operador,'+', bytes);
-                        this.saida+=" "+this.tabelaSimbolos.getAddressLabel(operador);
-                        if(this.tabelaSimbolos.realocavelLabel(operador)) this.UD.putBoolean(true);
-                        else this.UD.putBoolean(false);
+                        if(this.tabelaSimbolos.definidoLabel(operador)==false||this.tabelaSimbolos.haselementoExtern(operador) ) this.tabelaUsosDef.putUso(operador,'+', bytes);
+                            this.saida+=" "+this.tabelaSimbolos.getAddressLabel(operador);
+                        if(this.tabelaSimbolos.realocavelLabel(operador)) this.tabelaUsosDef.putBoolean(true);
+                        else this.tabelaUsosDef.putBoolean(false);
                         }else{
-                           this.saida+=tim.getHexdecimal(token1,token);
-                           this.UD.putBoolean(false);
+                           this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1,token);
+                           this.tabelaUsosDef.putBoolean(false);
                        }
                        this.saida+="\n";
+                       
                     }
                 }
             }
 
         for(int i=0;i<this.tabelaSimbolos.size();i++)
            if(this.tabelaSimbolos.definidoLabel(this.tabelaSimbolos.getElemento(i))&&this.tabelaSimbolos.isNumero(this.tabelaSimbolos.getElemento(i))==false)
-               this.UD.putDef(this.tabelaSimbolos.getElemento(i),this.tabelaSimbolos.getAddressLabel(this.tabelaSimbolos.getElemento(i)),this.tabelaSimbolos.realocavelLabel(this.tabelaSimbolos.getElemento(i))==true ? 'r':'a');
+               this.tabelaUsosDef.putDef(this.tabelaSimbolos.getElemento(i),this.tabelaSimbolos.getAddressLabel(this.tabelaSimbolos.getElemento(i)),this.tabelaSimbolos.realocavelLabel(this.tabelaSimbolos.getElemento(i))==true ? 'r':'a');
     }
 
     public String ImpprimirTabelas(){
-        return this.tabelaSimbolos.toString()+"\n"+this.tabelaSegment.toString()+"\n"+this.UD.imprimir();
-        //return this.tabelaSimbolos.toString()+"\n"+"\n"+this.UD.imprimir();
+        return this.tabelaSimbolos.toString()+"\n"+this.tabelaSegment.toString()+"\n"+this.tabelaUsosDef.imprimir();
     }
 
     public void ImprimeTabUso(JTextArea area){
-        this.UD.imprimeTabUso(area);
+        this.tabelaUsosDef.imprimeTabUso(area);
     }
 
     public void ImprimeTabDef(JTextArea area){
-        this.UD.imprimeTabDef(area);
+        this.tabelaUsosDef.imprimeTabDef(area);
     }
 
     public ArrayList<ControllerUso> getControllerUso(){
-        return this.UD.getUso();
+        return this.tabelaUsosDef.getUso();
     }
 
     public ArrayList<ControllerDefinicao> getControllerDefinicao(){
-        return this.UD.getDef();
+        return this.tabelaUsosDef.getDef();
     }
     public boolean[] getRelocabilidade(){
-        return this.UD.getBoolean();
+        return this.tabelaUsosDef.getBoolean();
     }
 
     public String getSAida(){
         return this.saida;
     }
     public void montar(){
-        this.primeiroPasso();;
+        this.primeiroPasso();
         this.segundoPasso();
     }
 }

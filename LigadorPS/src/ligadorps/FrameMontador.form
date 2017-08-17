@@ -188,7 +188,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tabela de Defini&#xe7;&#xe3;o Segmento 1"/>
+        <Property name="text" type="java.lang.String" value="Tabela de Defini&#xe7;&#xf5;es Segmento 1"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -209,7 +209,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tabela de Defini&#xe7;&#xe3;o Segmento 2"/>
+        <Property name="text" type="java.lang.String" value="Tabela de Defini&#xe7;&#xf5;es Segmento 2"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">

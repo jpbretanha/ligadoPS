@@ -162,14 +162,14 @@ public class FrameMontador extends javax.swing.JFrame {
         TabDef1Area.setRows(5);
         jScrollPane2.setViewportView(TabDef1Area);
 
-        jLabel2.setText("Tabela de Definição Segmento 1");
+        jLabel2.setText("Tabela de Definições Segmento 1");
 
         TabDef2Area.setEditable(false);
         TabDef2Area.setColumns(20);
         TabDef2Area.setRows(5);
         jScrollPane3.setViewportView(TabDef2Area);
 
-        jLabel3.setText("Tabela de Definição Segmento 2");
+        jLabel3.setText("Tabela de Definições Segmento 2");
 
         TabUso2Area.setColumns(20);
         TabUso2Area.setRows(5);
@@ -290,8 +290,7 @@ public class FrameMontador extends javax.swing.JFrame {
                 arquivo_w.close();  
             } catch (IOException e) {  
                 //e.printStackTrace();  
-            } 
-            
+            }
         }
     }//GEN-LAST:event_MontarSeg1ActionPerformed
 
@@ -336,11 +335,6 @@ public class FrameMontador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MontarSeg2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AbrirSeg1;
     private javax.swing.JButton AbrirSeg2;
@@ -363,15 +357,15 @@ public class FrameMontador extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public String leArquivo(File arqvo) {
-    Scanner scanner;
-        try {
-            scanner = new Scanner(arqvo);
-            scanner.useDelimiter("\\Z");
-            return scanner.next();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FrameMontador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return null;
-}
+        Scanner scanner;
+            try {
+                scanner = new Scanner(arqvo);
+                scanner.useDelimiter("\\Z");
+                return scanner.next();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FrameMontador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return null;
+    }
 
 }

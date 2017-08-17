@@ -91,7 +91,7 @@ public class Tabela {
         return this.tabela.contains(s);
     }
 
-    public String removerLastElemento(){
+    public String removeUltimoElemento(){
         String d;
         int i=this.tabela.size();
         i--;
@@ -105,23 +105,23 @@ public class Tabela {
         //if(this.tabela.isEmpty()==true) return false;
         if(haselementoExtern(s)==false){
             int i = this.tabela.indexOf(s);    
-            return tabela1.get(i) == 1 ? true : false;
+            return tabela1.get(i) == 1;
         }else return true;
     }
     public boolean isConst(String s){
         int i = this.tabela.indexOf(s);
-        boolean a = tabela1.get(i) == 1 ? true : false;
-        boolean b = tabela3.get(i) == 1 ? true : false;
-        if(a==true && b==false) return true;
-            else return false;
-        }
+        boolean a = tabela1.get(i) == 1;
+        boolean b = tabela3.get(i) == 1;
+        return a==true && b==false;
+    }
+    
     public boolean realocavelLabel(String s){
         if(haselementoExtern(s)==false){
             int i = this.tabela.indexOf(s);    
-            return tabela3.get(i) == 1 ? true : false;
+            return tabela3.get(i) == 1;
         }else{
          int i = this.extern.indexOf(s);    
-         return this.valor.get(i) == 1 ? true : false;
+         return this.valor.get(i) == 1;
         }
     }
     public void putEQU(String s,int a){
@@ -144,9 +144,7 @@ public class Tabela {
         String q;
         q = s.substring(0, 1);
 
-        if(q.equals("0")||q.equals("1")||q.equals("2")||q.equals("3")||q.equals("4")||q.equals("5")||q.equals("6")||q.equals("7")||q.equals("8")||q.equals("9")) 
-            return true;
-        return false;
+        return q.equals("0")||q.equals("1")||q.equals("2")||q.equals("3")||q.equals("4")||q.equals("5")||q.equals("6")||q.equals("7")||q.equals("8")||q.equals("9");
     }
     public int size(){
         return this.tabela.size();

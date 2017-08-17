@@ -152,7 +152,7 @@ public class TabelaInstrucaoMaquina {
       int i = this.tabela.indexOf(opcode);
       return this.hexdecimalOpcode[i].get(this.hexdecimalOpcode[i].size()-1);
     }
-    public String getHexdecimalEspecila(String opcode,int a){
+    public String getHexdecimalEspecial(String opcode,int a){
        int i = this.tabela.indexOf(opcode);
        return this.hexdecimalOpcode[i].get(a);
     }
