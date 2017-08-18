@@ -8,7 +8,7 @@ valor EQU 5
 mov AX,9
 mov AX,nove
 sub AX,valor
-in:
+inicio:
 mov oito,AX
 sub AX,um
 mov sete,AX
