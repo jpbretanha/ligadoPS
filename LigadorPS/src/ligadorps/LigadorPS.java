@@ -132,10 +132,10 @@ public class LigadorPS {
         
         //teste pra verificar se alguma tabela de uso ficou sem definicao
         TabUso1.stream().filter((TabUso11) -> (TabUso11.getDefinicao() == null)).forEach((_item) -> {
-            System.out.print("\nDeu erro no seg 1\n");
+            System.out.print("\nDeu erro no seg 1: "+_item+"\n");
         });
         TabUso2.stream().filter((TabUso21) -> (TabUso21.getDefinicao() == null)).forEach((_item) -> {
-            System.out.print("\nDeu erro no seg 2\n");
+            System.out.print("\nDeu erro no seg 2: "+_item+"\n");
         });
     }
     

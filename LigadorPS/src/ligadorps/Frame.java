@@ -67,9 +67,9 @@ public class Frame extends javax.swing.JFrame {
         AreaLig.setRows(5);
         jScrollPane2.setViewportView(AreaLig);
 
-        jLabel2.setText("Código fonte final (segmentos ligados)");
+        jLabel2.setText("Código ligado");
 
-        AbrirBotao.setText("Abrir arqvs. montados");
+        AbrirBotao.setText("Abrir Arquivos montados");
         AbrirBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AbrirBotaoActionPerformed(evt);
@@ -102,38 +102,30 @@ public class Frame extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(AbrirBotao)
-                                .addGap(85, 85, 85)
-                                .addComponent(LigarBotao)))
-                        .addGap(28, 28, 28)
+                            .addComponent(AbrirBotao))
+                        .addGap(68, 68, 68)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(LigarBotao, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AbrirBotao)
+                    .addComponent(LigarBotao))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AbrirBotao)
-                            .addComponent(LigarBotao))
-                        .addGap(6, 6, 6))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ArqvLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,6 +148,18 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LigarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LigarBotaoActionPerformed
+        if(ligador.getMont1()!=null && ligador.getMont2()!=null){
+
+            this.ligador.constroiTSG();
+            this.ligador.imprimeTSG(AreaTSG);
+            this.ligador.ajusta_TabsUso();
+            this.ligador.imprime_seg1(AreaLig);
+            this.ligador.imprime_seg2(AreaLig);
+            ArqvLabel.setText(ligador.getMont1().getParent()+"/saidas/lig.txt");
+        }
+    }//GEN-LAST:event_LigarBotaoActionPerformed
+
     private void AbrirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirBotaoActionPerformed
         JFileChooser jFileChooser1, jFileChooser2;
         jFileChooser1 = new JFileChooser("saidas");   //cria o jfilechooser
@@ -165,9 +169,9 @@ public class Frame extends javax.swing.JFrame {
             ligador.setMont1(null);
         }
         else{
-           ligador.setMont1(jFileChooser1.getSelectedFile());
+            ligador.setMont1(jFileChooser1.getSelectedFile());
         }
-        
+
         jFileChooser2 = new JFileChooser("saidas");   //cria o jfilechooser
         jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
         returnval = jFileChooser2.showOpenDialog(null); //mostra a janela para abrir arquivos
@@ -175,22 +179,10 @@ public class Frame extends javax.swing.JFrame {
             ligador.setMont2(null);
         }
         else{
-           ligador.setMont2(jFileChooser2.getSelectedFile());
-           
+            ligador.setMont2(jFileChooser2.getSelectedFile());
+
         }
     }//GEN-LAST:event_AbrirBotaoActionPerformed
-
-    private void LigarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LigarBotaoActionPerformed
-       if(ligador.getMont1()!=null && ligador.getMont2()!=null){
-         
-         this.ligador.constroiTSG();
-         this.ligador.imprimeTSG(AreaTSG);
-         this.ligador.ajusta_TabsUso();
-         this.ligador.imprime_seg1(AreaLig);
-         this.ligador.imprime_seg2(AreaLig);
-         ArqvLabel.setText(ligador.getMont1().getParent()+"/saidas/lig.txt");       
-       }
-    }//GEN-LAST:event_LigarBotaoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -71,7 +71,7 @@ public class Montador {
                                 break;
                         }
 
-                    }else if(this.tabelaInstrucaoMaquina.isInstrução(token)==false && this.tabelaInstrucaoMaquina.isOperador(token)==false){//se não for instrução ou operador sem label = contem label ou é um label
+                    }else if(this.tabelaInstrucaoMaquina.isInstrução(token)==false && this.tabelaInstrucaoMaquina.isOperador(token)==false){
                         StringTokenizer st2 = new StringTokenizer(token,",");
                         if(st2.countTokens()==1){           //se st2 conter apenas um elemento
                             if(this.tabelaSimbolos.isNumero(token)) this.tabelaSimbolos.putLabel(token, 1,Integer.parseInt(token),0);
