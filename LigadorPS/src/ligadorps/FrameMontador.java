@@ -90,6 +90,7 @@ public class FrameMontador extends javax.swing.JFrame {
     public FrameMontador() {
         super("Montador");
         initComponents(); 
+        log.setText("Clique no botao para abrir o primeiro segmento\n");
     }
 
     /**
@@ -117,8 +118,9 @@ public class FrameMontador extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         TabUso2Area = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        LocMont1 = new javax.swing.JLabel();
-        LocMont2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        log = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,9 +179,11 @@ public class FrameMontador extends javax.swing.JFrame {
 
         jLabel4.setText("Tabela de Uso Segmento 2");
 
-        LocMont1.setText("Local do arquivo mont1");
+        jLabel5.setText("Log:");
 
-        LocMont2.setText("Local do arquivo mont2");
+        log.setColumns(20);
+        log.setRows(5);
+        jScrollPane5.setViewportView(log);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,35 +193,33 @@ public class FrameMontador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MontarSeg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AbrirSeg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(AbrirSeg2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MontarSeg2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(MontarSeg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(AbrirSeg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(AbrirSeg2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(MontarSeg2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jScrollPane1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(39, 39, 39))
-                                        .addComponent(jLabel4))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane4))))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LocMont1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                        .addComponent(LocMont2, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(39, 39, 39))
+                                .addComponent(jLabel4))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +235,8 @@ public class FrameMontador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -247,12 +250,9 @@ public class FrameMontador extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LocMont1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                    .addComponent(LocMont2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,11 +268,14 @@ public class FrameMontador extends javax.swing.JFrame {
         }
         else{
            seg1 = leArquivo(jFileChooser1.getSelectedFile());
+           log.setText(log.getText() + "Monte o segmento 1\n");
         }
     }//GEN-LAST:event_AbrirSeg1ActionPerformed
 
     private void MontarSeg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MontarSeg1ActionPerformed
+        
         if(seg1!= null){
+            log.setText(log.getText() + "Montando primeiro segmento...\n");
             m = new Montador(seg1);
             m.montar();
             this.TabDef1 = m.getControllerDefinicao();
@@ -285,9 +288,9 @@ public class FrameMontador extends javax.swing.JFrame {
                 File mont1_f = new File("saidas/mont1.txt");
                 arquivo_w = new FileWriter(mont1_f);  
                 arquivo_w.write(m.getSAida()); 
-                
-                LocMont1.setText(""+mont1_f.getAbsoluteFile());
                 arquivo_w.close();  
+                log.setText(log.getText() + "Primeiro Segmento montado em: " + mont1_f.getAbsoluteFile() + "\n");
+                log.setText(log.getText() + "Clique no botao para abrir o segundo segmento\n");
             } catch (IOException e) {  
                 //e.printStackTrace();  
             }
@@ -304,11 +307,13 @@ public class FrameMontador extends javax.swing.JFrame {
         }
         else{
            seg2 = leArquivo(jFileChooser2.getSelectedFile());
+           log.setText(log.getText() + "Monte o segundo segmento\n");
         }
     }//GEN-LAST:event_AbrirSeg2ActionPerformed
 
     private void MontarSeg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MontarSeg2ActionPerformed
         if(this.TabUso1 != null && seg2!= null){
+            log.setText(log.getText() + "Montando o segundo segmento...\n");
             m = new Montador(seg2);
             m.montar();
             
@@ -323,12 +328,12 @@ public class FrameMontador extends javax.swing.JFrame {
                 File mont2_f = new File("saidas/mont2.txt");
                 arquivo_w = new FileWriter(mont2_f);  
                 arquivo_w.write(m.getSAida()); 
-                
-                LocMont2.setText(""+mont2_f.getAbsoluteFile());
                 arquivo_w.close();
                 LigadorPS lig = new LigadorPS(this.reloc1, this.getReloc2(), this.TabUso1, this.TabUso2, this.TabDef1, this.TabDef2);
                 Frame fr = new Frame(lig);
                 fr.setVisible(true);
+                log.setText(log.getText() + "Segundo segmento foi montado com sucesso\n");
+                log.setText(log.getText() + "Ligue os dois segmentos\n");
             } catch (IOException e) {  
                 //e.printStackTrace();  
             }
@@ -338,8 +343,6 @@ public class FrameMontador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AbrirSeg1;
     private javax.swing.JButton AbrirSeg2;
-    private javax.swing.JLabel LocMont1;
-    private javax.swing.JLabel LocMont2;
     private javax.swing.JButton MontarSeg1;
     private javax.swing.JButton MontarSeg2;
     private javax.swing.JTextArea TabDef1Area;
@@ -350,10 +353,13 @@ public class FrameMontador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextArea log;
     // End of variables declaration//GEN-END:variables
 
     public String leArquivo(File arqvo) {

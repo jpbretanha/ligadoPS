@@ -88,7 +88,7 @@ public class LigadorPS {
     public void imprimeTSG(JTextArea AreaTSG) {
         for(int i=0; i<TSG.size(); i++){
             ControllerDefinicao tmp = TSG.get(i);
-            String linha = i+": Simbolo "+tmp.getSimbolo()+" - Valor: "+tmp.getValor()+" - Relocacao: "+tmp.getReloc()+"\n";
+            String linha = i+": Simbolo "+tmp.getSimbolo()+" - Valor: "+tmp.getValor()+" - Relocabilidade: "+tmp.getReloc()+"\n";
             AreaTSG.append(linha);
         }
     }
@@ -355,7 +355,7 @@ public class LigadorPS {
             
            
             StringTokenizer st;
-            ArrayList<String> guarda_tks_1 = new ArrayList<String>();
+            ArrayList<String> guarda_tks_1 = new ArrayList<>();
             while(sc.hasNext()){
                 StringBuilder linha = new StringBuilder();
                 linha.append(sc.next()).append("\n");

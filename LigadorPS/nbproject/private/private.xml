@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/ControllerUso.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/Tabela.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/LigadorPS.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/TabelaPseudoInstrucoes.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/TabelaDeUsosEDef.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/ControllerDefinicao.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/Montador.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/TabelaInstrucaoMaquina.java</file>
+            <file>file:/C:/Users/João%20Pedro%20Bretanha/Desktop/Trabalho%20FInal%20PS/LigadorPS/src/ligadorps/FrameMontador.java</file>
+        </group>
     </open-files>
 </project-private>

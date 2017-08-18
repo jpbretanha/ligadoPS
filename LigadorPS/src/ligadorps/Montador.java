@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 public class Montador {
     String Entrada,saida;
     Tabela tabelaSimbolos;
-    Tabela tabelaSegment;
+    Tabela tabelaSegmentos;
     TabelaInstrucaoMaquina tabelaInstrucaoMaquina ;
     TabelaPseudoInstrucoes tabelaPseudoInstrucoes ;
     TabelaDeUsosEDef tabelaUsosDef;
@@ -20,7 +20,7 @@ public class Montador {
         this.Entrada = s;
         this.saida="";
         this.tabelaSimbolos = new Tabela();
-        this.tabelaSegment = new Tabela();
+        this.tabelaSegmentos = new Tabela();
         this.tabelaInstrucaoMaquina = new TabelaInstrucaoMaquina();
         this.tabelaPseudoInstrucoes = new TabelaPseudoInstrucoes();    
         this.tabelaUsosDef = new TabelaDeUsosEDef();
@@ -37,7 +37,7 @@ public class Montador {
                 for(int i=0;st1.hasMoreElements()==true;i++){
                     token1 = token ;
                     token = st1.nextToken();
-                    if(this.tabelaPseudoInstrucoes.isInstrucaoMontagem(token)){ //Etoken = st1.nextToken();ntre se for instrução de montagem
+                    if(this.tabelaPseudoInstrucoes.isInstrucaoMontagem(token)){ //Se for instrução de montagem
                         switch (token) {
                             case "DW":
                                 bytes+=2;
@@ -51,7 +51,7 @@ public class Montador {
                                 this.tabelaSimbolos.putEQU(token1,Integer.parseInt(token));
                                 break;
                             case "SEGMENT":
-                                this.tabelaSegment.putLabel(this.tabelaSimbolos.removeUltimoElemento(),1, bytes);
+                                this.tabelaSegmentos.putLabel(this.tabelaSimbolos.removeUltimoElemento(),1, bytes);
                                 break;
                             case "ENDS":
                                 this.tabelaSimbolos.removeUltimoElemento();
@@ -173,7 +173,7 @@ public class Montador {
                                 }else{
 
                                     if(token1.equals("mov")){
-                                    if(this.tabelaSegment.contLabel(operador)) this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
+                                    if(this.tabelaSegmentos.contLabel(operador)) this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
                                     else this.saida+=tabelaInstrucaoMaquina.getHexdecimalEspecial(token1,13);
                                     }else this.saida+=tabelaInstrucaoMaquina.getHexdecimal(token1);
                                 }
@@ -210,7 +210,7 @@ public class Montador {
     }
 
     public String ImpprimirTabelas(){
-        return this.tabelaSimbolos.toString()+"\n"+this.tabelaSegment.toString()+"\n"+this.tabelaUsosDef.imprimir();
+        return this.tabelaSimbolos.toString()+"\n"+this.tabelaSegmentos.toString()+"\n"+this.tabelaUsosDef.imprimir();
     }
 
     public void ImprimeTabUso(JTextArea area){

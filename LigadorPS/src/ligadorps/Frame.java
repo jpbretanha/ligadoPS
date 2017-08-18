@@ -188,7 +188,7 @@ public class Frame extends javax.swing.JFrame {
          this.ligador.ajusta_TabsUso();
          this.ligador.imprime_seg1(AreaLig);
          this.ligador.imprime_seg2(AreaLig);
-         ArqvLabel.setText(ligador.getMont1().getParent()+"/saidas/lig.txt");
+         ArqvLabel.setText(ligador.getMont1().getParent()+"/saidas/lig.txt");       
        }
     }//GEN-LAST:event_LigarBotaoActionPerformed
 
