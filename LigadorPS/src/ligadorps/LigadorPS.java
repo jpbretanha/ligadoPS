@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ligadorps;
 
 import java.io.File;
@@ -151,7 +146,6 @@ public class LigadorPS {
     public ControllerUso buscaPorOcorrTabUso(ArrayList<ControllerUso> tab, int valor){
         for (ControllerUso tab1 : tab) {
             if (valor == tab1.getOcorrencia()) {
-                //System.out.print("achou\n");
                 return tab1;
             }
         }

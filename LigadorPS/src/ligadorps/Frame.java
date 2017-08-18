@@ -162,9 +162,9 @@ public class Frame extends javax.swing.JFrame {
 
     private void AbrirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirBotaoActionPerformed
         JFileChooser jFileChooser1, jFileChooser2;
-        jFileChooser1 = new JFileChooser("saidas");   //cria o jfilechooser
-        jFileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
-        int returnval = jFileChooser1.showOpenDialog(null); //mostra a janela para abrir arquivos
+        jFileChooser1 = new JFileChooser("saidas");
+        jFileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        int returnval = jFileChooser1.showOpenDialog(null); 
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
             ligador.setMont1(null);
         }
@@ -172,9 +172,9 @@ public class Frame extends javax.swing.JFrame {
             ligador.setMont1(jFileChooser1.getSelectedFile());
         }
 
-        jFileChooser2 = new JFileChooser("saidas");   //cria o jfilechooser
-        jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //mostrar apenas diretorios e arquivos
-        returnval = jFileChooser2.showOpenDialog(null); //mostra a janela para abrir arquivos
+        jFileChooser2 = new JFileChooser("saidas");
+        jFileChooser2.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        returnval = jFileChooser2.showOpenDialog(null);
         if( (returnval == JFileChooser.CANCEL_OPTION) || returnval == JFileChooser.ERROR_OPTION){
             ligador.setMont2(null);
         }
@@ -184,9 +184,6 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AbrirBotaoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
